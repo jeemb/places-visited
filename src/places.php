@@ -30,6 +30,10 @@ class Place
         return $_SESSION['list_of_places'];
     }
 
+    static function delete()
+    {
+        $_SESSION['list_of_places'] = array();
+    }
 }
 
 

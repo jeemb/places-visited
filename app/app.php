@@ -19,10 +19,17 @@
     });
 
     // display page to show list
-    $app->get("/places", function() use ($app) {
+    $app->post("/places", function() use ($app) {
         $place = new Place($_POST['location'],$_POST['date']);
         $place->save();
         return $app['twig']->render('places.html.twig', array('places' => Place::getAll()));
+    });
+
+    //delete button
+
+    $app->post("/home", function() use ($app) {
+        Place::delete();
+        return $app['twig']->render('root.html.twig');
     });
 
     // delete page to clear list of pages
